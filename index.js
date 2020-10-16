@@ -2,6 +2,7 @@ const express=require('express');
 const mongoose= require('mongoose');
 const bodyparser=require('body-parser');
 const cookieParser=require('cookie-parser');
+const cors = require("cors");
 const db=require('./config/config').get(process.env.NODE_ENV);
 
 const User=require('./models/user');
@@ -12,6 +13,7 @@ const app=express();
 app.use(bodyparser.urlencoded({extended : false}));
 app.use(bodyparser.json());
 app.use(cookieParser());
+app.use(cors())
 
 // database connection
 mongoose.Promise=global.Promise;
